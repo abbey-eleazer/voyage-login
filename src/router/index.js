@@ -3,6 +3,7 @@ import LoginPage from '@/components/LoginPage.vue'
 import CongratsPage from '@/components/CongratsPage.vue'
 import SignupView from '@/views/SignupView.vue'
 import { auth } from '@/firebase/firebase'
+import { useAuthStore } from '@/authStore'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,7 +32,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if ( !auth && to.name !== 'login') { 
+  if (!auth && to.name !== 'login') { 
     next({ name: 'login' })
    return 
   }
